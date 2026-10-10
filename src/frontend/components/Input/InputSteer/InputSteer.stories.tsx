@@ -21,6 +21,7 @@ type Story = StoryObj<typeof InputSteer>;
 export const Primary: Story = {
   args: {
     angleRad: 0,
+    wheelStyle: 'moza-fsr2',
   },
 };
 

@@ -512,9 +512,10 @@ const SingleInputWidgetSettings = ({ widgetId }: { widgetId: string }) => {
                       | 'nascar'
                       | 'ushape'
                       | 'ring'
+                      | 'moza-fsr2'
                     >
                       title="Wheel Style"
-                      value={config.steer.config.style ?? 'default'}
+                      value={config.steer.config.style || 'moza-fsr2'}
                       options={[
                         { label: 'Default', value: 'default' },
                         { label: 'Formula', value: 'formula' },
@@ -522,6 +523,8 @@ const SingleInputWidgetSettings = ({ widgetId }: { widgetId: string }) => {
                         { label: 'NASCAR', value: 'nascar' },
                         { label: 'U-Shape', value: 'ushape' },
                         { label: 'Ring (gear inside)', value: 'ring' },
+                        { label: 'Moza FSR 2', value: 'moza-fsr2' },
+
                       ]}
                       onChange={(v) =>
                         handleConfigChange({

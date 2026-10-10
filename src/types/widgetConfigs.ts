@@ -300,7 +300,7 @@ export interface FlatTrackMapConfig {
 }
 
 export interface SteerConfig {
-  style: 'formula' | 'lmp' | 'nascar' | 'ushape' | 'default' | 'ring';
+  style: 'formula' | 'lmp' | 'nascar' | 'ushape' | 'default' | 'ring'| 'moza-fsr2';
   color: 'dark' | 'light';
 }
 

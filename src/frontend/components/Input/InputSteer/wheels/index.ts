@@ -8,3 +8,5 @@ export * from "./NascarB";
 export * from "./NascarW";
 export * from "./UshapeB";
 export * from "./UshapeW";
+export * from "./MozaFsr2B";
+export * from "./MozaFsr2W";

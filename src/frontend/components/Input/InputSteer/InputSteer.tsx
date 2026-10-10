@@ -10,6 +10,8 @@ import {
   NascarW,
   UshapeB,
   UshapeW,
+  MozaFsr2B,
+  MozaFsr2W
 } from './wheels';
 import { RotationIndicator } from './RotationIndicator';
 import { SteerDial } from './SteerDial';
@@ -21,7 +23,8 @@ export type WheelStyle =
   | 'nascar'
   | 'ushape'
   | 'default'
-  | 'ring';
+  | 'ring'
+  | 'moza-fsr2';
 
 const wheelComponentMap = {
   default: {
@@ -44,13 +47,16 @@ const wheelComponentMap = {
     dark: UshapeB,
     light: UshapeW,
   },
+  'moza-fsr2': {
+    dark: MozaFsr2B,
+    light: MozaFsr2W,
+  },
 };
 
 export interface InputSteerProps {
   angleRad?: number;
   wheelStyle?: WheelStyle;
   wheelColor?: 'dark' | 'light';
-  /** Used by the `ring` style to render gear + speed inside the dial. */
   gear?: number;
   speedMs?: number;
   unit?: number;
@@ -68,14 +74,12 @@ export function InputSteer({
 }: InputSteerProps) {
   const wheelRef = useRef<HTMLDivElement>(null);
 
-  // Memoize the wheel component selection (only changes when style/color change)
   const WheelComponent = useMemo(() => {
     const entry =
       wheelComponentMap[wheelStyle as keyof typeof wheelComponentMap];
     return (entry ?? wheelComponentMap.default)[wheelColor];
   }, [wheelStyle, wheelColor]);
 
-  // Use CSS custom properties for smooth updates without React re-renders
   useEffect(() => {
     if (wheelRef.current) {
       wheelRef.current.style.setProperty(
@@ -98,7 +102,7 @@ export function InputSteer({
     );
   }
 
-  return (
+    return (
     <div className="w-full h-full flex fill-white relative">
       <div
         ref={wheelRef}
